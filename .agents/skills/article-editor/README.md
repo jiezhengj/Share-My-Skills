@@ -1,8 +1,8 @@
 这是一个面向中文文章的编辑部式编辑技能。它先判断文章要对读者完成什么承诺，再根据材料、证据和作者意图决定干预层级；它不是泛化的顺句或润色工具。
 
-# 安装指南
+**发给 Agent 的指令**
 
-需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中，发给 Agent 的指令：
+需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中发送：
 
 > 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-editor .agents/skills/article-editor`
 
