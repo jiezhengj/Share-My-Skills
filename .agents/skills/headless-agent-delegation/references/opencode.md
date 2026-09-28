@@ -1,30 +1,10 @@
-本文件只记录 OpenCode 的 headless 调用差异；不要把这些参数套用到其他 CLI。
+# OpenCode
 
-# 调用与输入
+- 普通单次调用：`opencode run "评审目标和交付要求"`。需要观察工具过程时加 `--format json`；运行结束后同时检查进程退出状态和最后的答复文本。
+- 从目标项目根目录启动。OpenCode 从当前目录向上发现项目 `opencode.json`/`.opencode` 配置，并与全局配置合并；不要从临时目录启动后假定目标项目的配置仍然生效，也不要覆盖已有的 `OPENCODE_CONFIG_CONTENT` 等环境配置。
+- `--file` 可附加少量指定文件；大量仓库内容通常由 CLI 在正确目录中通过搜索和读取取得，不必全部塞进消息。`--auto` 会自动批准未明确拒绝的权限请求，不要作为普通评审的默认参数。
+- 不要求预先配置特定 Agent 才能做普通评审。若用户指定 Agent，先确认该 Agent 在当前配置中可用；不要把 subagent 名称直接当成主 Agent。
 
-短提示通过 `run` 的消息参数传入：
+官方参考：[CLI Commands](https://opencode.ai/v2/docs/cli/commands/)、[Config](https://opencode.ai/v2/docs/config/)。参数以当前安装版本的 `opencode run --help` 为准。
 
-```text
-opencode run "提示词"
-```
-
-长证据可用 `--file <path>` 附加，并在消息参数中说明评审目标：
-
-```text
-opencode run --file evidence.md "按要求评审附件"
-```
-
-不要假设 stdin 会成为提示词，也不要把 `--file` 当作提示词。把进程工作目录设为目标项目根目录。
-
-# 权限
-
-如果本机 `opencode --help` 列出 `--auto`，该选项会自动批准未被明确拒绝的权限请求，不是仅限文件编辑的窄权限模式。不要默认添加；只有用户明确授权相应自动批准行为时才使用。
-
-OpenCode 默认权限不能视为只读。内置 `explore` 是子 Agent，不能直接作为 `opencode run --agent` 的目标。未获修改授权时，只能使用已配置且有效权限实际阻止项目写入的主 Agent；同时确认 shell、MCP 或可调用子 Agent 不会绕过该限制。没有可验证的只读主 Agent 时不要启动该任务。提示词本身不构成权限限制。
-
-普通委派使用默认文本输出即可；`--format json` 输出 NDJSON。
-
-# 官方资料
-
-- [OpenCode CLI Commands](https://opencode.ai/v2/docs/cli/commands/)
-- [OpenCode V2 Permissions](https://opencode.ai/v2/docs/permissions)
+最近实测版本：OpenCode v2.0.18（2026-09-29）。该记录不表示本技能与此版本强绑定；遇到差异时查看当前 `opencode run --help` 并按其支持方式调整，不要机械照搬本文参数。

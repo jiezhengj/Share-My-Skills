@@ -1,28 +1,10 @@
-本文件只记录 `cmdc` 的 headless 调用差异；不要把这些参数套用到其他 CLI。
+# Command Code (CMDc)
 
-# 调用与输入
+- 普通单次调用：`cmdc -p "评审目标和交付要求"`。在 Windows 中，产品文档或帮助若把命令称为 `cmd`，要注意 `cmd` 通常解析为系统命令提示符；使用安装包实际提供的 Command Code 可执行文件或 shim（例如 `cmdc`），并用当前环境的命令解析和 `--help` 确认。
+- 默认 headless 工具可读文件、搜索和列目录；shell、编辑和写入默认被阻止。普通代码评审使用默认能力即可；不要为了评审加 `--yolo` 或 `--tools-all`。`--tools-enable` 是增加被 headless 隐藏的工具，不是只读白名单。
+- Windows 下，如果 `read_file.file_path` 收到 `Path must be absolute`，用当前工作目录补成绝对路径后重试该读取；不需要为此改权限或打开 shell。
+- 需要观察工具和多轮进度时加 `--output-format json`。这是 NDJSON：事件行为 `{"type":"event","event":...}`，最后读取独立的 `{"type":"result",...}` 行，检查 `subtype`、`stopReason` 和 `finalText`。`tool_running`、`tool_completed` 能区分调用请求与执行结果。
 
-确认目标项目根目录后再启动。用户已明确授权 cmdc 在该项目中执行任务时，使用 `--trust` 跳过初次项目授权提示；它不会打开文件编辑、shell 命令或 `-p` 默认禁用的工具权限。
+官方参考：[Headless Mode](https://commandcode.ai/docs/headless)。参数以当前安装版本的 `cmdc --help` 为准。
 
-短提示使用 `-p`，并带上 `--trust`：
-
-```text
-cmdc --trust -p "提示词"
-```
-
-长提示不要放入命令行参数。省略查询参数，把提示词发送到 `cmdc --trust --output-format json -p` 的 stdin；输入结束后关闭 stdin。把进程工作目录设为已确认的目标项目根目录。
-
-# 权限
-
-Headless 默认阻止文件编辑和 shell 命令。只有用户明确授权修改后，才考虑 `--permission-mode accept-edits`：它允许常规工作区编辑及一组安全文件命令；它不自动批准任意 shell 命令。不要默认使用 `--yolo`。
-
-短任务可以使用默认文本输出。多文件或预计多轮的任务使用 `--output-format json` 观察进度。它输出 NDJSON 事件流，不是单个 JSON 文档；逐行读取，直到收到最终 `type: "result"` 行。
-
-事件用于区分启动、工具工作和模型等待：`run_start` 表示本次运行已启动，`tool_running` / `tool_completed` 表示单个工具的状态，`model_request_start` / `model_request_end` 表示模型请求的状态。工具完成不代表整项任务完成；没有最终 `result` 就不能报告成功。
-
-默认文本模式只在任务结束后输出最终答案。进程仍运行但没有文本，无法证明它停在授权提示。对长任务优先检查 JSON 事件；若在合理等待范围内没有最终结果，结束该次调用、记录最后一个事件，并按未完成状态处理。不要只因沉默就重复启动同一长任务。
-
-# 官方资料
-
-- [Command Code Headless Mode](https://commandcode.ai/docs/headless)
-- [Command Code Permissions](https://commandcode.ai/docs/permissions)
+最近实测版本：CMDc 1.66.0（2026-09-29）。该记录不表示本技能与此版本强绑定；遇到差异时查看当前 `cmdc --help` 并按其支持方式调整，不要机械照搬本文参数。

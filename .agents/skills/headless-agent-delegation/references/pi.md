@@ -1,31 +1,10 @@
-本文件只记录 Pi 的 headless 调用差异；不要把这些参数套用到其他 CLI。
+# Pi
 
-# 调用与输入
+- 普通单次调用：`pi --print "评审目标和交付要求"`。需要中间工具事件时加 `--mode json`；它输出 JSONL 事件，不是权限限制，也不是单个 JSON 文档。
+- JSON 诊断时，检查 `tool_execution_start` 和对应的 `tool_execution_end`，读取错误或工具结果；等待 `agent_settled` 作为本次自动工作结束标记，不能只看 `agent_end`。
+- 普通评审不要默认传 `--tools`、`--exclude-tools`、`--no-extensions` 或其他限制参数。`--tools` 会替换工具集合；若用户明确要求工具排除，先按当前安装版本的帮助确认效果。
+- 多文件评审可从目标项目根目录启动，让 Pi 使用文件读取和搜索工具。不要预先要求逐个读取；只有运行事件显示具体批量调用失败时，才针对那项失败调整调用。
 
-`--print` 执行单次任务并输出最终文本：
+官方参考：[CLI Integration](https://pi.dev/docs/latest/cli-integration)。参数以当前安装版本的 `pi --help` 为准。
 
-```text
-pi --print "提示词"
-```
-
-长证据可以通过 stdin 前置到首条提示，或在提示中使用 `@path` 附加文件。把进程工作目录设为目标项目根目录；它会影响项目资源发现和相对路径解析，但不是文件访问边界。
-
-# 工具与项目资源
-
-`--tools <list>` 用给定逗号分隔列表替换默认工具集合；独立只读任务使用：
-
-```text
-pi --no-approve --no-extensions --no-session --tools read,grep,find,ls --print "提示词"
-```
-
-`--no-approve` 不加载信任门控的项目资源，`--no-extensions` 禁用发现到的扩展，`--no-session` 不持久化会话；配合工具白名单，避免项目设置或扩展绕过只读工具范围。用户明确要求继续已有会话时，不使用 `--no-session`，并确保项目写入仍受实际权限限制。Pi 默认可能启用 `read`、`bash`、`edit`、`write`，具体也受设置影响；工具列表限制不是操作系统沙箱。
-
-`--exclude-tools <list>` 会在其他工具选择处理后禁用指定工具。
-
-`--approve` 只表示信任并加载项目本地配置和资源，不是编辑授权，也不会改变进程的操作系统权限。Pi 及其工具仍以启动它的操作系统账户权限运行。
-
-# 官方资料
-
-- [Pi Command Line](https://pi.dev/docs/latest/cli)
-- [Pi CLI Integration](https://pi.dev/docs/latest/cli-integration)
-- [Run Pi Safely](https://pi.dev/docs/latest/security)
+最近实测版本：Pi 0.87.1（2026-09-29）。该记录不表示本技能与此版本强绑定；遇到差异时查看当前 `pi --help` 并按其支持方式调整，不要机械照搬本文参数。
