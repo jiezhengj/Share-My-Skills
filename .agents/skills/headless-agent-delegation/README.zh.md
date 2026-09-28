@@ -1,5 +1,11 @@
 [README](README.md) · [English](README.en.md)
 
+**发给 Agent 的指令**
+
+需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中发送：
+
+> 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/headless-agent-delegation .agents/skills/headless-agent-delegation`
+
 # 适用条件
 
 `headless-agent-delegation` 只在用户明确要求调用已安装的外部编码 Agent CLI 时使用，例如让 `agy`、`cmdc`、`OpenCode` 或 `pi` 评审、检查、执行或修改一个边界清楚的任务。

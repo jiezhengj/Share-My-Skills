@@ -1,5 +1,11 @@
 这是一个中文文章写前、写中和写后的自然化编辑技能。它检查证据、信息密度、作者判断、结构、语言和误判边界，减少模板腔与 AI 化表达，但不把文章当成“AI 检测”对象，也不靠添加口语词来伪装自然。
 
+**发给 Agent 的指令**
+
+需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中发送：
+
+> 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/cn-natural-writing-editor .agents/skills/cn-natural-writing-editor`
+
 # 适用场景
 
 - 只有主题、素材或口述，需要建立读者契约和写作提纲。

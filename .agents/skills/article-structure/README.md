@@ -1,5 +1,11 @@
 这是一个保真的文章结构整理技能。它改善标题层级、段落边界和内容定位，但严格保留正文文字、顺序、链接、引用、代码、图片和表格内容。
 
+**发给 Agent 的指令**
+
+需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中发送：
+
+> 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-structure .agents/skills/article-structure`
+
 # 适用场景
 
 - 梳理本地 Markdown 的标题层级和段落结构。
