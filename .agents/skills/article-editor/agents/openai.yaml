@@ -1,0 +1,4 @@
+interface:
+  display_name: "编辑部资深编辑"
+  short_description: "以出版社资深编辑标准诊断、访谈与改写中文文章"
+  default_prompt: "请使用 $article-editor，以编辑部资深编辑的标准诊断读者契约，保留原始素材，并在确认后改写文章。"

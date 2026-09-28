@@ -1,0 +1,4 @@
+interface:
+  display_name: "中文文章自然化编辑"
+  short_description: "写前规划、写中组织、写后修订中文文章，保留作者语气"
+  default_prompt: "请使用 $cn-natural-writing-editor 从写作前规划、写作中组织或成稿修订开始处理这篇中文文章，保留我的事实和语气。"

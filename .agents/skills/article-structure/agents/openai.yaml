@@ -1,0 +1,4 @@
+interface:
+  display_name: "文章结构梳理"
+  short_description: "保留原文正文，梳理 Markdown 与飞书文章的标题层级和段落结构"
+  default_prompt: "请使用 $article-structure 梳理这篇文章的标题层级和段落结构。"
