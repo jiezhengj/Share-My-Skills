@@ -42,7 +42,9 @@ agy --input-format stream-json --output-format stream-json
 只使用本次会话实际提供的只读文件或搜索工具；不要调用 run_command/RunCommand 或任何写入、编辑、删除工具。若缺少必要的只读能力，说明缺口并停止，不要改用 shell。
 ```
 
-这是提示词约束，不是权限沙箱：Headless 默认权限模式虽显示为 `request-review`，但官方说明活动工作区内的文件读取和写入仍会自动允许。未获修改授权时，只有在有效权限规则或操作系统隔离确实阻止写入后才能委派；否则不要启动该只读任务。`--mode=plan` 也不是只读保证，它可能创建计划文档。
+这是提示词约束，不是权限沙箱：Headless 默认权限模式虽显示为 `request-review`，但官方说明活动工作区内的文件读取和写入仍会自动允许。当前 CLI 帮助没有专用的 `--read-only` 开关；`--mode=plan` 是规划模式，不构成写入隔离，也可能创建计划文档。
+
+官方 CLI 权限配置支持 `permissions.deny` 规则，例如拒绝指定路径的 `write_file`。这不是整体只读模式：shell 命令由独立的 `command` 权限控制，仅限制文件写入工具不足以阻止命令改写工作区。未获修改授权时，只有确认本次会话实际采用的权限规则覆盖评审目录和可能产生写入的命令，或操作系统隔离确实阻止这些写入后，才启动只读评审。不能仅凭提示词、`request-review`、`--mode=plan` 或设置文件中出现规则就认定写入已被阻止。
 
 Headless 下需要确认的 shell 工具可能被软拒绝；JSON 中常见动作名为 `command`，显示名可能是 `RunCommand`。即使退出码为 `0`、状态为 `SUCCESS`，也可能同时得到空 `response` 和 `denied_actions`，这不算完成。
 
@@ -52,4 +54,4 @@ Headless 下需要确认的 shell 工具可能被软拒绝；JSON 中常见动�
 
 若 Git 工作区探测持续触发无关命令拒绝，可从非 Git 中立目录启动，并使用 `--add-dir <project>` 添加项目；此时提示词必须使用绝对路径。`--add-dir` 只扩展工作区，不限制写入；只读任务只有在另有已验证的权限规则或操作系统隔离阻止项目写入时才能使用，否则不要采用此回避方式。`--project`、`--new-project` 和 `--remote-control` 会改变项目或连接生命周期，只在用户明确要求时使用。
 
-官方参考：<https://antigravity.google/docs/cli/headless/>。具体参数以当前机器上的 `agy --help` 为准。
+官方参考：[Headless mode](https://antigravity.google/docs/cli/headless/) 和 [Permissions](https://antigravity.google/docs/permissions?tab=cli)。具体参数以当前机器上的 `agy --help` 为准。
