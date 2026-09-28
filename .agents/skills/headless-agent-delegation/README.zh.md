@@ -1,8 +1,8 @@
 [README](README.md) · [English](README.en.md)
 
-**发给 Agent 的指令**
+# 安装指南
 
-需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中发送：
+需要 Node.js 20+ 和 npm；目标技能目录已存在时，请先处理冲突，不要覆盖。在要安装技能的目标项目中，发给 Agent 的指令：
 
 > 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/headless-agent-delegation .agents/skills/headless-agent-delegation`
 
