@@ -1,12 +1,18 @@
 [README](README.md) · [中文](README.zh.md)
 
+# Installation
+
+Node.js 20+ and npm are required for this download command. If the target directory already exists, resolve the conflict before installing; do not overwrite it. In the target project, ask the agent to run:
+
+> Run in the current project: `npx degit jiezhengj/Share-My-Skills/.agents/skills/adaptive-life-consulting .agents/skills/adaptive-life-consulting`
+
 # What Problem It Solves
 
 A lot of people already use AI to talk through real-life problems: whether to change jobs, what sport to pick up, whether to move, or why a personal habit keeps falling apart.
 
 Plain chat modes often run into familiar frustrations: ask a different AI and you get a conflicting conclusion; you know "context matters," but you have no idea which background facts actually drive the decision; after a while, the AI starts treating a single subjective remark as your permanent "personality profile"; and when you return later, you have to explain the whole backstory from scratch.
 
-**Adaptive Life Consulting** is deliberately old-fashioned: no programs, code, scripts, or black-box scoring models, just a pure set of Prompt rules. It has one straightforward purpose—enabling your AI assistant to act like a grounded adviser: **to help you think through life's choices clearly and move forward into real-world action.**
+**Adaptive Life Consulting** uses prompt rules to guide consulting judgments, with Python helpers for workspace initialization, case creation, memory validation, conclusion snapshots, and dependency searches. The agent interprets the problem, evaluates evidence, and designs experiments in context. Its purpose is to help your AI assistant act like a grounded adviser: **to help you think through life's choices clearly and move forward into real-world action.**
 
 # What It Is Not
 
@@ -46,14 +52,14 @@ As the conversation progresses, questions should become fewer and the direction 
 
 # How to Use It
 
-This skill can be used directly in mainstream Agent assistant tools like Codex, Claude, Workbuddy, Antigravity, and similar platforms.
+Use an agent that can load skill instructions. External research requires search or source-reading tools, case persistence requires workspace file access, and the helper scripts require Python 3. Skill discovery and loading depend on the product's configuration.
 
 ## Setup
 
 The skill is packaged under `.agents/skills/adaptive-life-consulting/`. You can:
 
-- **Use as a project-level skill**: Open this repository in your Agent assistant (Antigravity, Claude Code, Codex, etc.). The assistant will automatically discover and load the skill.
-- **Install globally**: Symlink or copy `.agents/skills/adaptive-life-consulting` to your global skills directory (e.g., `~/.agents/skills/` and `~/.gemini/config/skills/`).
+- **Use as a project-level skill**: Copy the complete skill directory and configure its path as required by your product. Products that discover `.agents/skills/` can load it from there.
+- **Install globally**: Copy or symlink the complete directory into your product's supported global skills directory. Check that product's documentation for the path and any additional configuration.
 
 ## Starting Your First Conversation
 
@@ -67,7 +73,7 @@ No special prompts or commands are needed. Just start talking like you would wit
 
 ## Continuing Without Starting Over, and Without Permanent Labels
 
-It automatically helps you track long-term topics over time: tentative ideas, experiments you've tried, and interim conclusions are saved so you can pick up where you left off.
+When the host supports workspace file access and you allow records to be saved, it tracks long-term topics: tentative ideas, experiments you've tried, and interim conclusions can be retained so you can resume the case. If records cannot be saved, it explains the limits of recovery across conversations.
 
 However, past records never turn into rigid personality labels. Facts expire, preferences depend on context, and earlier ideas can always be revised.
 

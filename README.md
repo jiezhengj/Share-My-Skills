@@ -12,9 +12,9 @@
 | --- | --- |
 | [adaptive-life-consulting](.agents/skills/adaptive-life-consulting/README.zh.md)<br>梳理生活选择、习惯、职业和日常困惑；根据关键未知选择提问、查证、回顾过往行为、形成暂时判断或设计现实尝试。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/adaptive-life-consulting .agents/skills/adaptive-life-consulting` |
 | [article-editor](.agents/skills/article-editor/README.md)<br>以编辑部式流程改进中文文章：诊断和访谈、确认编辑简报、按授权改写，并从读者角度检查成稿。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-editor .agents/skills/article-editor` |
-| [article-structure](.agents/skills/article-structure/README.md)<br>整理文章标题、段落和内容层级，同时保留正文文字与顺序。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-structure .agents/skills/article-structure` |
+| [article-structure](.agents/skills/article-structure/README.md)<br>逐段审查语义边界，整理段落、标题和内容层级，同时保留正文文字与顺序。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-structure .agents/skills/article-structure` |
 | [cn-natural-writing-editor](.agents/skills/cn-natural-writing-editor/README.md)<br>支持中文文章的写前规划、写作、诊断、授权改写和冷读，关注证据、作者声音与读者理解。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/cn-natural-writing-editor .agents/skills/cn-natural-writing-editor` |
-| [headless-agent-delegation](.agents/skills/headless-agent-delegation/README.zh.md)<br>在用户明确要求时，将边界清楚的任务交给已安装的外部编码 Agent CLI，并约束调用和文件修改范围。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/headless-agent-delegation .agents/skills/headless-agent-delegation` |
+| [agent-cli-delegation](.agents/skills/agent-cli-delegation/README.zh.md)<br>在用户明确要求时，将任务交给已安装的外部编码 Agent CLI，支持精确会话续接、模型选择、进度观察和故障恢复。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/agent-cli-delegation .agents/skills/agent-cli-delegation` |
 
 Agent 对技能目录的发现和配置方式因产品而异。安装后，技能规则与限制见对应目录中的 `SKILL.md`，简介见该目录中的 `README` 文件。
 
@@ -27,7 +27,7 @@ Agent 对技能目录的发现和配置方式因产品而异。安装后，技�
     ├── article-editor/
     ├── article-structure/
     ├── cn-natural-writing-editor/
-    └── headless-agent-delegation/
+    └── agent-cli-delegation/
 ```
 
 每个技能目录都是一个独立单元。`SKILL.md` 提供 Agent 执行规则；`README` 面向使用者；`references/`、`scripts/` 和 `agents/` 等目录按技能需要提供补充资料、校验工具或 Agent 元数据。安装时请复制整个技能目录，以免遗漏这些文件。

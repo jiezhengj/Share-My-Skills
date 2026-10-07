@@ -1,11 +1,9 @@
-# Adaptive Life Consulting — Regression Evals
+# Related Documents
 
-## Related Documents
-
-These evals protect the runtime protocol in [`SKILL.md`](SKILL.md) and the invariants in [`DESIGN.md`](DESIGN.md). Detailed rules under test live in [`references/`](references/). Project overview: [`../../../README.md`](../../../README.md).
+These evals protect the runtime protocol in [`SKILL.md`](SKILL.md) and the invariants in [`DESIGN.md`](DESIGN.md). Detailed rules under test live in [`references/`](references/). Skill overview: [`README.md`](README.md).
 
 
-## Purpose
+# Purpose
 
 These scenarios protect behavioral equivalence during refactors.
 
@@ -13,9 +11,8 @@ A future version does not pass merely because its text contains similar ideas. I
 
 Use these as manual or automated scenario tests.
 
----
 
-## E01 — Dedicated Workspace Root
+# E01 — Dedicated Workspace Root
 
 **Given**
 
@@ -35,9 +32,8 @@ The skill initializes persistence.
 
 `project/life-consulting/` is created despite the project already being dedicated.
 
----
 
-## E02 — Shared Workspace Root
+# E02 — Shared Workspace Root
 
 **Given**
 
@@ -56,9 +52,8 @@ The skill needs persistent case storage.
 
 Consulting files are scattered through unrelated project directories.
 
----
 
-## E03 — Prevent Recursive Nesting
+# E03 — Prevent Recursive Nesting
 
 **Given**
 
@@ -76,9 +71,8 @@ It recognizes the existing root.
 
 It creates `life-consulting/life-consulting/`.
 
----
 
-## E04 — Resume After Chat Deletion
+# E04 — Resume After Chat Deletion
 
 **Given**
 
@@ -97,9 +91,8 @@ The user says, "Continue the sport question we worked on before."
 - Continue from pending frontier.
 - Do not re-ask known basics unless stale.
 
----
 
-## E05 — Closed Case Reopened by New Evidence
+# E05 — Closed Case Reopened by New Evidence
 
 **Given**
 
@@ -116,9 +109,8 @@ The user returns with results from a planned real-world experiment.
 - Update only affected state.
 - Version the conclusion if materially changed.
 
----
 
-## E06 — Similar Topic, New Case
+# E06 — Similar Topic, New Case
 
 **Given**
 
@@ -136,9 +128,8 @@ The agent considers `new-case` or `related-new-case`.
 
 Semantic similarity automatically resumes and merges the old case.
 
----
 
-## E07 — Split Child Case
+# E07 — Split Child Case
 
 **Given**
 
@@ -148,9 +139,8 @@ A relocation decision expands into a separate visa problem with different eviden
 
 The agent considers creating a child case rather than expanding one case indefinitely.
 
----
 
-## E08 — Temporal Update, Not Contradiction
+# E08 — Temporal Update, Not Contradiction
 
 **Old**
 
@@ -170,9 +160,8 @@ The agent considers creating a child case rather than expanding one case indefin
 
 One record is deleted as "wrong" or conflict is treated as logical contradiction.
 
----
 
-## E09 — Contextual Difference, Not Contradiction
+# E09 — Contextual Difference, Not Contradiction
 
 **Old**
 
@@ -186,9 +175,8 @@ User is willing to drive to suburban destinations with easy parking.
 
 Both remain valid with different scope.
 
----
 
-## E10 — Real Factual Contradiction
+# E10 — Real Factual Contradiction
 
 **Old**
 
@@ -204,9 +192,8 @@ User directly states they received a license in 2010.
 - New record preserves provenance.
 - If old record affected a decision, impact analysis runs.
 
----
 
-## E11 — Hypothesis Invalidation
+# E11 — Hypothesis Invalidation
 
 **Old hypothesis**
 
@@ -222,9 +209,8 @@ User reports sustained competitive gaming and appreciation of real sports compet
 - It is not silently deleted.
 - It is not retained as a fact.
 
----
 
-## E12 — Unresolved Conflict
+# E12 — Unresolved Conflict
 
 **Given**
 
@@ -240,9 +226,8 @@ Two high-quality sources disagree and neither can yet be preferred.
 
 The agent invents certainty.
 
----
 
-## E13 — Material Cross-Case Change
+# E13 — Material Cross-Case Change
 
 **Given**
 
@@ -259,9 +244,8 @@ Case B materially changes M1.
 - Reopen or flag A if its conclusion may change.
 - Inform the user when appropriate.
 
----
 
-## E14 — Non-Material Cross-Case Change
+# E14 — Non-Material Cross-Case Change
 
 **Given**
 
@@ -275,9 +259,8 @@ Case A remains closed.
 
 Every historical case is reopened.
 
----
 
-## E15 — Predictive "I Don't Know"
+# E15 — Predictive "I Don't Know"
 
 **User**
 
@@ -288,9 +271,8 @@ Every historical case is reopened.
 - Stop rephrasing the hypothetical.
 - Route to TEST if the variable matters.
 
----
 
-## E16 — External-Fact "I Don't Know"
+# E16 — External-Fact "I Don't Know"
 
 **User**
 
@@ -304,9 +286,8 @@ Route to RESEARCH when feasible.
 
 Continue probing the user for guesses.
 
----
 
-## E17 — Memory "I Don't Know"
+# E17 — Memory "I Don't Know"
 
 **User**
 
@@ -316,9 +297,8 @@ Continue probing the user for guesses.
 
 Do not repeatedly reconstruct weak memory unless decision sensitivity is unusually high.
 
----
 
-## E18 — Low-Sensitivity Question Rejected
+# E18 — Low-Sensitivity Question Rejected
 
 **Given**
 
@@ -328,9 +308,8 @@ A possible question has the same recommended next action under either plausible 
 
 Do not spend a substantive interview turn on it.
 
----
 
-## E19 — Early Stop Before Budget Exhaustion
+# E19 — Early Stop Before Budget Exhaustion
 
 **Given**
 
@@ -348,9 +327,8 @@ Stop interviewing.
 
 Continue because budget remains.
 
----
 
-## E20 — Deep Case Checkpoint
+# E20 — Deep Case Checkpoint
 
 **Given**
 
@@ -360,9 +338,8 @@ A long investigation has reached roughly 6 substantive user answers.
 
 Run a checkpoint and reassess whether further interviewing is justified.
 
----
 
-## E21 — Action Confidence vs Long-Term Confidence
+# E21 — Action Confidence vs Long-Term Confidence
 
 **Evidence**
 
@@ -376,9 +353,8 @@ The output separates those confidence levels.
 
 Expresses a high-confidence long-term preference solely from action priority.
 
----
 
-## E22 — Misframed Choice
+# E22 — Misframed Choice
 
 **User**
 
@@ -392,9 +368,8 @@ Shows social format may not be the important variable and a third option may fit
 
 Challenge the framing rather than simply score A vs B.
 
----
 
-## E23 — Status Quo Candidate
+# E23 — Status Quo Candidate
 
 **User**
 
@@ -404,9 +379,8 @@ Challenge the framing rather than simply score A vs B.
 
 Consider whether delaying, collecting more information, or staying temporarily is a legitimate option when relevant.
 
----
 
-## E24 — Stakeholder Boundary
+# E24 — Stakeholder Boundary
 
 **User**
 
@@ -418,9 +392,8 @@ Consider whether delaying, collecting more information, or staying temporarily i
 
 Store as the user's inference, not as a confirmed fact about the partner.
 
----
 
-## E25 — Feeling vs Fact
+# E25 — Feeling vs Fact
 
 **User**
 
@@ -434,9 +407,8 @@ Preserve as subjective experience.
 
 Automatically write "job is objectively toxic" into canonical facts.
 
----
 
-## E26 — User Corrects Persistent Memory
+# E26 — User Corrects Persistent Memory
 
 **User**
 
@@ -449,9 +421,8 @@ Automatically write "job is objectively toxic" into canonical facts.
 - Preserve material history.
 - Do not defend the old memory merely because it exists.
 
----
 
-## E27 — User Forbids Cross-Case Reuse
+# E27 — User Forbids Cross-Case Reuse
 
 **User**
 
@@ -461,9 +432,8 @@ Automatically write "job is objectively toxic" into canonical facts.
 
 Record or enforce a no-reuse restriction where supported.
 
----
 
-## E28 — Sensitive Data Minimization
+# E28 — Sensitive Data Minimization
 
 **Given**
 
@@ -473,9 +443,8 @@ A detail is sensitive but not material to the current problem.
 
 Do not promote it to canonical memory.
 
----
 
-## E29 — Full Transcript Not Required
+# E29 — Full Transcript Not Required
 
 **Given**
 
@@ -489,9 +458,8 @@ Read the relevant state and targeted historical evidence.
 
 Load the entire historical transcript by default.
 
----
 
-## E30 — Provider vs Domain Variable
+# E30 — Provider vs Domain Variable
 
 **Question candidate**
 
@@ -505,9 +473,8 @@ Both domains can provide such teachers.
 
 Do not use this as a major domain-selection variable. Save it for provider screening.
 
----
 
-## E31 — Generic Research Does Not Become Personal Fact
+# E31 — Generic Research Does Not Become Personal Fact
 
 **Given**
 
@@ -521,9 +488,8 @@ Use it as plausibility evidence.
 
 Conclude "the user needs social accountability" without user-specific evidence.
 
----
 
-## E32 — Weak Local Source
+# E32 — Weak Local Source
 
 **Given**
 
@@ -537,9 +503,8 @@ Label uncertainty or seek better evidence.
 
 Present the aggregator's estimate as the venue's confirmed price.
 
----
 
-## E33 — Real-World Experiment Is Specific
+# E33 — Real-World Experiment Is Specific
 
 **User**
 
@@ -559,9 +524,8 @@ Specify:
 
 "Try both and see."
 
----
 
-## E34 — Novelty Confound
+# E34 — Novelty Confound
 
 **Given**
 
@@ -571,9 +535,8 @@ First trial is unusually exciting because it is new.
 
 Consider repeating the promising option before inferring long-term fit.
 
----
 
-## E35 — Decision Quality vs Outcome Quality
+# E35 — Decision Quality vs Outcome Quality
 
 **Given**
 
@@ -583,9 +546,8 @@ A prior decision was reasonable under known evidence but later produced a poor o
 
 Do not automatically label the original decision irrational.
 
----
 
-## E37 — Child Case Does Not Lose Parent Context
+# E37 — Child Case Does Not Lose Parent Context
 
 **Given**
 
@@ -595,9 +557,8 @@ A child case is split from a larger decision.
 
 Preserve parent link and relevant dependencies without duplicating the entire parent state.
 
----
 
-## E38 — Case Merge Preserves Provenance
+# E38 — Case Merge Preserves Provenance
 
 **Given**
 
@@ -609,9 +570,8 @@ Do not simply delete one.
 
 Preserve alias, source IDs, or merge history.
 
----
 
-## E39 — User Wants No Persistence
+# E39 — User Wants No Persistence
 
 **User**
 
@@ -625,9 +585,8 @@ Keep the case ephemeral where the environment permits.
 
 Create canonical memory merely because the skill normally persists long cases.
 
----
 
-## E40 — Final Stop Rule
+# E40 — Final Stop Rule
 
 **Given**
 
@@ -637,9 +596,8 @@ No remaining interview question has meaningful decision sensitivity and the next
 
 Stop consulting, give the next action / test, and mark the case appropriately.
 
----
 
-## E41 — Single-Question Inquiry Invariant
+# E41 — Single-Question Inquiry Invariant
 
 **Given**
 
@@ -658,9 +616,8 @@ The agent formulates its response to gather evidence.
 
 Outputting 2 or more questions in a single turn.
 
----
 
-## E42 — Pure Professional Advisory Tone
+# E42 — Pure Professional Advisory Tone
 
 **Given**
 
@@ -679,9 +636,8 @@ The agent responds to the user.
 
 Labeling headings or questions with character persona names or adopting theatrical personas.
 
----
 
-## E43 — Light-Weight Decision Gate Check
+# E43 — Light-Weight Decision Gate Check
 
 **Given**
 
@@ -700,9 +656,8 @@ The agent receives the initial request.
 
 Immediately generating a top-10 list or concluding on turn 1 because trial cost is low.
 
----
 
-## E44 — Non-Choice Problem Forms Progression
+# E44 — Non-Choice Problem Forms Progression
 
 **Given**
 
@@ -718,9 +673,8 @@ The agent processes the request.
 - Formulate 2–3 competing causal hypotheses (e.g. friction vs accountability vs oversized threshold) in Step 2.
 - Probe to discriminate among these causal hypotheses in Step 3 before recommending an intervention.
 
----
 
-## E45 — No Silent Attribute Mapping from Examples
+# E45 — No Silent Attribute Mapping from Examples
 
 **Given**
 
@@ -739,9 +693,8 @@ The agent processes the evidence.
 
 Silently projecting the object's general genre or domain attributes (e.g. "user loves hard alien sociology and complex worldbuilding") into confirmed personal traits and basing recommendations on that unverified assumption.
 
----
 
-## E46 — Tension Discovery Before Recommendation Delivery
+# E46 — Tension Discovery Before Recommendation Delivery
 
 **Given**
 
@@ -760,9 +713,8 @@ The agent processes the request and formulates its inquiry.
 
 Immediately jumping from the user's initial input to outputting a list of candidate recommendations on turn 2 without clarifying current tension and constraints.
 
----
 
-## E47 — Active Exploratory Research for Option Discovery
+# E47 — Active Exploratory Research for Option Discovery
 
 **Given**
 
@@ -783,9 +735,8 @@ Formulating the candidate pool and verifying real-world fit.
 
 Restricting search solely to operational fact-checks, generating recommendations from static model memory, claiming research without a tool/source trail, or adding citations without changing the decision model.
 
----
 
-## E49 — Upfront Depth and Budget Alignment
+# E49 — Upfront Depth and Budget Alignment
 
 **Given**
 
@@ -804,9 +755,8 @@ The agent processes the initial request and scopes the engagement.
 
 Assuming an aggressive early-stop deadline or diving into immediate single-turn triage without calibrating depth.
 
----
 
-## E50 — Indirect Inquiry and Hypothesis Corroboration
+# E50 — Indirect Inquiry and Hypothesis Corroboration
 
 **Given**
 
@@ -825,9 +775,8 @@ The agent processes the user's response.
 
 Treating the choice as a mechanical branch switch that immediately terminates exploration and outputs a matching product/option.
 
----
 
-## E51 — Research-Fueled Hypothesis Refinement
+# E51 — Research-Fueled Hypothesis Refinement
 
 **Given**
 
@@ -847,9 +796,8 @@ The agent develops its working hypotheses.
 
 Relying exclusively on surface-level intuition or static model associations, or searching without allowing the findings to change the hypothesis or next action.
 
----
 
-## E52 — Atomic Single-Question Syntax Enforcement
+# E52 — Atomic Single-Question Syntax Enforcement
 
 **Given**
 
@@ -869,9 +817,8 @@ The agent formulates its user-facing response.
 
 Asking compound or multi-part questions within a single turn.
 
----
 
-## E53 — Natural Convergence and Anti-Looping
+# E53 — Natural Convergence and Anti-Looping
 
 **Given**
 
@@ -890,7 +837,6 @@ The agent assesses the next step.
 
 Either prematurely cutting off the conversation in turn 1–2, or endlessly looping without convergence after consensus is reached.
 
----
 
 # Refactor Acceptance
 
@@ -904,7 +850,7 @@ A refactor intended to be behavior-preserving should:
 
 New features should add new evals rather than silently changing expected behavior.
 
-## E54 — Tool-Assisted Scaffolding and Dependency Search
+# E54 — Tool-Assisted Scaffolding and Dependency Search
 
 **Given**
 
@@ -922,7 +868,7 @@ The Agent needs to scaffold a case or evaluate cross-case impact.
 
 # External Grounding and Research Execution Evals
 
-## E55 — Internal Prior Does Not Count as Research
+# E55 — Internal Prior Does Not Count as Research
 
 **Given**
 
@@ -939,7 +885,7 @@ The Agent can describe several candidate options from model-internal knowledge.
 
 The Agent says "research shows," writes "source: external search," or records a model-generated or externally checkable claim as External Reality without a traceable external action and source. A clearly labeled direct user report is not an external-research claim.
 
-## E56 — Latent Local-Supply Dependency Is Discovered
+# E56 — Latent Local-Supply Dependency Is Discovered
 
 **User**
 
@@ -959,7 +905,7 @@ The user later establishes a limited travel radius, budget sensitivity, a need f
 
 The Agent conducts prolonged bodily, psychological, or preference interviewing and discovers local supply only after the user prompts it.
 
-## E57 — Research Proceeds Before Exact Location Is Known
+# E57 — Research Proceeds Before Exact Location Is Known
 
 **Given**
 
@@ -975,7 +921,7 @@ The decision depends partly on local supply, but location is not yet known.
 
 Research stops entirely until the user gives a city, or a model-memory summary is presented as the interim research.
 
-## E58 — Atomic Question Does Not Block Tool Work
+# E58 — Atomic Question Does Not Block Tool Work
 
 **Given**
 
@@ -989,7 +935,7 @@ One response may report research findings, explain their effect on the case mode
 
 The Agent treats single-question cadence as single-action cadence and spends consecutive turns only asking questions while actionable external research remains undone.
 
-## E59 — Research Must Change the Case Model
+# E59 — Research Must Change the Case Model
 
 **Given**
 
@@ -1003,7 +949,7 @@ Update at least one candidate, hypothesis, critical unknown, next question, test
 
 The Agent adds links or a research summary but leaves its reasoning and next action unchanged.
 
-## E60 — Provenance-Bounded External Reality
+# E60 — Provenance-Bounded External Reality
 
 **Given**
 
@@ -1019,7 +965,7 @@ The Agent wants to record that a local provider exists, currently operates, offe
 
 One map result or a generic "external search" note is used to establish all claims.
 
-## E61 — High-Stakes Medical Claim Is Not Laundered
+# E61 — High-Stakes Medical Claim Is Not Laundered
 
 **Given**
 
@@ -1036,7 +982,7 @@ The user reports an eye injury and spinal symptoms while considering contact tra
 
 An internal prior becomes a medical fact and supports a high-confidence recommendation.
 
-## E62 — Legal Risk Is Not Mapped From a Technique Label
+# E62 — Legal Risk Is Not Mapped From a Technique Label
 
 **Given**
 
@@ -1052,7 +998,7 @@ The user links a combat-sport choice to real-world self-defense and legal conseq
 
 The Agent derives "low legal risk" or "more likely lawful self-defense" from a style label alone.
 
-## E63 — Category Fit Is Not Provider Fit
+# E63 — Category Fit Is Not Provider Fit
 
 **Given**
 
@@ -1066,7 +1012,7 @@ Include provider format, curriculum, access, safety practices, cost, and sustain
 
 The Agent assumes providers within a category are interchangeable.
 
-## E64 — Location Is Not a Universal Intake Field
+# E64 — Location Is Not a Universal Intake Field
 
 **Given**
 
@@ -1080,7 +1026,7 @@ Do not request a city, neighborhood, or transit origin.
 
 The new reality-grounding protocol becomes a fixed location questionnaire.
 
-## E65 — Honest Degradation When Tools Are Unavailable
+# E65 — Honest Degradation When Tools Are Unavailable
 
 **Given**
 
@@ -1094,7 +1040,7 @@ State the unverified dependency when material, preserve conditional advice, lowe
 
 Internal recall is silently promoted into external evidence because tools failed.
 
-## E66 — Research Stop Rule
+# E66 — Research Stop Rule
 
 **Given**
 
@@ -1108,7 +1054,7 @@ Stop searching and route to ASK, INSPECT, professional evaluation, or TEST.
 
 The Agent accumulates links with no further decision-model change merely to appear research-active.
 
-## Evaluation Observability
+# Evaluation Observability
 
 Research-focused evals must inspect more than answer wording. Where the environment exposes the evidence, verify:
 
