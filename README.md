@@ -14,7 +14,7 @@
 | [article-editor](.agents/skills/article-editor/README.md)<br>以编辑部式流程改进中文文章：诊断和访谈、确认编辑简报、按授权改写，并从读者角度检查成稿。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-editor .agents/skills/article-editor` |
 | [article-structure](.agents/skills/article-structure/README.md)<br>逐段审查语义边界，整理段落、标题和内容层级，同时保留正文文字与顺序。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/article-structure .agents/skills/article-structure` |
 | [cn-natural-writing-editor](.agents/skills/cn-natural-writing-editor/README.md)<br>支持中文文章的写前规划、写作、诊断、授权改写和冷读，关注证据、作者声音与读者理解。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/cn-natural-writing-editor .agents/skills/cn-natural-writing-editor` |
-| [agent-cli-delegation](.agents/skills/agent-cli-delegation/README.zh.md)<br>在用户明确要求时，将任务交给已安装的外部编码 Agent CLI，支持精确会话续接、模型选择、进度观察和故障恢复。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/agent-cli-delegation .agents/skills/agent-cli-delegation` |
+| [agent-cli-delegation](.agents/skills/agent-cli-delegation/README.zh.md)<br>在用户明确要求时，将任务交给已安装的外部编码 Agent CLI，支持按要求随机选择 CLI、精确会话续接、模型选择、阶段评审、进度观察与有限收束。 | 请在当前项目执行：`npx degit jiezhengj/Share-My-Skills/.agents/skills/agent-cli-delegation .agents/skills/agent-cli-delegation` |
 
 Agent 对技能目录的发现和配置方式因产品而异。安装后，技能规则与限制见对应目录中的 `SKILL.md`，简介见该目录中的 `README` 文件。
 
