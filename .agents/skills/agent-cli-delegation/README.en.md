@@ -17,6 +17,7 @@ Use an explicitly named model, or retain the default/existing session model when
 - Event output helps observe tool-heavy work and does not grant permissions. Help and startup checks respond to unknown capabilities, changed environments, or failures; they need not repeat every call.
 - Headless automatic denial may use a user denied template. Identify its source using actual instructions, effective rules, and CLI diagnostics; the template does not add a user prohibition. The caller may choose invocation-level approval options within an authorized task. Actual user refusals and enforced restrictions remain binding.
 - Reviews do not automatically require restricted tools or default permissions. SUCCESS, exit codes, and intermediate PASS statements do not establish completion; verify evidence and final delivery.
+- A first failure or 401 does not establish that retry is impossible. A limited retry can test for transient failure; use risk, cost, and recovery signals to stop persistent repetition. Attribute native non-retryable markers and their scope. Keeping login configuration unchanged does not prohibit retries.
 - Repeated file names do not establish stagnation. Use new evidence, changed methods, and cost to decide whether to wait, request closure, or recover, without a universal retry count.
 
 Project records retain compact associations and summaries, support legacy choices, and exclude credentials, full history, and permanent permissions. If project writes are forbidden, keep associations in the current conversation.

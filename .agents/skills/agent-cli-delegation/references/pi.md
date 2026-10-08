@@ -16,6 +16,8 @@
 
 `pi --list-models` 提供 provider/model、context、max-out、thinking/images，不给价格或可调用证明。实际模型取原生 assistant 消息或 session 字段；缺失为 null。
 
+认证、provider 或其他首次失败按[共享重试规则](models.md#重试与认证诊断)判断；有限诊断重试和重复已执行问题分别处理，不单凭错误类别禁止重试。
+
 # RPC 与取消
 
 `--mode rpc` 需要宿主能持续写 JSON 命令、读响应、关联请求并控制 abort；具备接口可尝试并核实，不因参数存在就称已支持。只有启动/输出接口时可用 print 加精确 session 逐轮调用。取消后核对已执行动作，避免重复发送相同问题；已有原生记录中重复发问导致 Pi 报告重复，不能只看后次输出认定续接失败。
