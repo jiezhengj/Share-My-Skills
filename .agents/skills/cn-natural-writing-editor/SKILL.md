@@ -1,5 +1,5 @@
 ---
-name: 中文自然写作编辑
+name: cn-natural-writing-editor
 description: Plan, draft, diagnose, and revise Chinese articles before, during, or after writing by checking evidence, information density, author judgment, structure, language, and false-positive boundaries. Use when the user wants to reduce template-like or AI-flavored writing, preserve personal voice, organize source materials, define readers and claims, create an outline, or cold-read a finished article without inventing facts. When the user raises a writing-quality concern, especially AI flavor, template language, hollow content, or dissatisfaction with an edit, analyze likely intent and possible Skill gaps, propose an optimization, and ask before changing the Skill. Support anonymization only when the user explicitly requests it.
 ---
 

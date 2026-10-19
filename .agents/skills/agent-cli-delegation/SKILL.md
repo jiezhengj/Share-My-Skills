@@ -1,5 +1,5 @@
 ---
-name: 外部代理委派
+name: agent-cli-delegation
 description: "Use only when the user explicitly asks the calling Agent to delegate a bounded task to an installed external coding agent through a controllable CLI mode, such as agy, cmdc, OpenCode, or pi."
 ---
 
