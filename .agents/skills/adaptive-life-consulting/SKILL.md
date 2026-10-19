@@ -1,5 +1,5 @@
 ---
-name: adaptive-life-consulting
+name: 自适应生活咨询
 description: >-
   An adaptive consulting protocol with prompt-guided reasoning and deterministic Python helpers for working through uncertain, personally contextual life decisions, dilemmas, habit formation, career choices, activity selection, and everyday problems. Dynamically determines whether the next useful step is to ask the user, research external reality, inspect past behavior, form a tentative inference, or design a real-world test.
 ---
